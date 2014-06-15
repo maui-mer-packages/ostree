@@ -1,0 +1,53 @@
+From 55b98847e580b0260d7b85cd78857701739d2d78 Mon Sep 17 00:00:00 2001
+From: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
+Date: Sun, 15 Jun 2014 05:05:25 +0000
+Subject: [PATCH] Remove gtk-doc support
+
+---
+ Makefile.am  | 6 +-----
+ configure.ac | 2 --
+ 2 files changed, 1 insertion(+), 7 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 0bbae61..d472f47 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -23,14 +23,10 @@ AM_CPPFLAGS += -DDATADIR='"$(datadir)"' -DLIBEXECDIR='"$(libexecdir)"' \
+ 	-DGLIB_VERSION_MIN_REQUIRED=GLIB_VERSION_2_34 -DGLIB_VERSION_MAX_ALLOWED=GLIB_VERSION_2_34 \
+ 	-DSOUP_VERSION_MIN_REQUIRED=SOUP_VERSION_2_40 -DSOUP_VERSION_MAX_ALLOWED=SOUP_VERSION_40
+ AM_CFLAGS += $(WARN_CFLAGS)
+-DISTCHECK_CONFIGURE_FLAGS += --enable-gtk-doc --disable-maintainer-mode
++DISTCHECK_CONFIGURE_FLAGS += --disable-maintainer-mode
+ 
+ SUBDIRS += .
+ 
+-if ENABLE_GTK_DOC
+-SUBDIRS += doc
+-endif
+-
+ EXTRA_DIST += autogen.sh COPYING README.md
+ 
+ OT_INTERNAL_GIO_UNIX_CFLAGS = $(OT_DEP_GIO_UNIX_CFLAGS)
+diff --git a/configure.ac b/configure.ac
+index 0a90fde..57dc7f1 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -116,7 +116,6 @@ AM_CONDITIONAL(USE_GPGME, test $with_gpgme != no)
+ 
+ LIBARCHIVE_DEPENDENCY="libarchive >= 2.8.0"
+ 
+-GTK_DOC_CHECK([1.15], [--flavour no-tmpl])
+ AC_PATH_PROG([XSLTPROC], [xsltproc])
+ 
+ AC_ARG_WITH(libarchive,
+@@ -207,7 +206,6 @@ AM_CONDITIONAL(BUILDOPT_GJS, test x$have_gjs = xyes)
+ 
+ AC_CONFIG_FILES([
+ Makefile
+-doc/Makefile
+ src/libostree/ostree-1.pc
+ ])
+ AC_OUTPUT
+-- 
+1.8.3-rc3
+

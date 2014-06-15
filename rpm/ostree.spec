@@ -17,6 +17,7 @@ URL:        http://live.gnome.org/OSTree
 Source0:    %{name}-%{version}.tar.xz
 Source1:    91-ostree.preset
 Source100:  ostree.yaml
+Patch0:     0001-Remove-gtk-doc-support.patch
 Requires:   dracut
 Requires:   systemd
 Requires(preun): systemd
@@ -55,12 +56,21 @@ The %{name}-devel package includes the header files for the %{name} library.
 %prep
 %setup -q -n %{name}-%{version}/upstream
 
+# 0001-Remove-gtk-doc-support.patch
+%patch0 -p1
 # >> setup
 # << setup
 
 %build
 # >> build pre
 mkdir m4
+
+cat > gtk-doc.make <<EOF
+EXTRA_DIST =
+CLEANFILES =
+EOF
+
+rm -fr doc
 # << build pre
 
 %reconfigure --disable-static \

@@ -15,6 +15,8 @@ Description: |
 Sources:
     - "%{name}-%{version}.tar.xz"
     - 91-ostree.preset
+Patches:
+    - 0001-Remove-gtk-doc-support.patch
 SetupOptions: -q -n %{name}-%{version}/upstream
 
 PkgBR: 
