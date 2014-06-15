@@ -45,6 +45,7 @@ ConfigOptions:
     - --disable-gtk-doc
     - --disable-libarchive
     - --with-dracut
+    - --without-selinux
 
 Files:
     - "%{_bindir}/ostree"

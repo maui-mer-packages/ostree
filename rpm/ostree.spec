@@ -67,7 +67,8 @@ mkdir m4
     --disable-silent-rules \
     --disable-gtk-doc \
     --disable-libarchive \
-    --with-dracut
+    --with-dracut \
+    --without-selinux
 
 make %{?_smp_mflags}
 
