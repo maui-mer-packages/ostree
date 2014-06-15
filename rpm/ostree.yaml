@@ -13,8 +13,9 @@ Description: |
     those levels, offering a blend of the advantages (and disadvantages)
     of both.
 Sources:
-    - ostree-%{version}.tar.xz
+    - "%{name}-%{version}.tar.xz"
     - 91-ostree.preset
+SetupOptions: -q -n %{name}-%{version}/upstream
 
 PkgBR: 
     - autoconf
@@ -31,7 +32,14 @@ Requires:
     - dracut
     - systemd
 
-Configure: configure
+RequiresPost:
+    - systemd
+RequiresPreUn:
+    - systemd
+RequiresPostUn:
+    - systemd
+
+Configure: reconfigure
 ConfigOptions:
     - --disable-silent-rules
     - --disable-gtk-doc

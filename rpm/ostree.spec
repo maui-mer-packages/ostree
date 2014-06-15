@@ -14,12 +14,15 @@ Release:    1
 Group:      System/Libraries
 License:    LGPLv2+
 URL:        http://live.gnome.org/OSTree
-Source0:    ostree-%{version}.tar.xz
+Source0:    %{name}-%{version}.tar.xz
 Source1:    91-ostree.preset
 Source100:  ostree.yaml
 Requires:   dracut
 Requires:   systemd
+Requires(preun): systemd
+Requires(post): systemd
 Requires(post): /sbin/ldconfig
+Requires(postun): systemd
 Requires(postun): /sbin/ldconfig
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(libsoup-2.4)
@@ -50,18 +53,16 @@ The %{name}-devel package includes the header files for the %{name} library.
 
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q -n %{name}-%{version}/upstream
 
 # >> setup
 # << setup
 
 %build
 # >> build pre
-cd upstream
-env NOCONFIGURE=1 ./autogen.sh
 # << build pre
 
-%configure --disable-static \
+%reconfigure --disable-static \
     --disable-silent-rules \
     --disable-gtk-doc \
     --disable-libarchive \
@@ -75,7 +76,6 @@ make %{?_smp_mflags}
 %install
 rm -rf %{buildroot}
 # >> install pre
-cd upstream
 # << install pre
 %make_install
 
