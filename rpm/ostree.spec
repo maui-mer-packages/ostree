@@ -9,7 +9,7 @@ Name:       ostree
 # << macros
 
 Summary:    Git for operating system binaries
-Version:    2014.2
+Version:    2014.5
 Release:    1
 Group:      System/Libraries
 License:    LGPLv2+
