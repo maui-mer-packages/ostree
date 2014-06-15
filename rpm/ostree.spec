@@ -80,7 +80,7 @@ rm -rf %{buildroot}
 %make_install
 
 # >> install post
-install -D -m 0644 %{SOURCE1} %{buildroot}/${_prefix}/lib/systemd/system-preset/91-ostree.preset
+install -D -m 0644 %{SOURCE1} %{buildroot}/lib/systemd/system-preset/91-ostree.preset
 # << install post
 
 %preun
@@ -107,7 +107,7 @@ install -D -m 0644 %{SOURCE1} %{buildroot}/${_prefix}/lib/systemd/system-preset/
 %{_prefix}/lib/dracut/modules.d/98ostree/*
 %{_libdir}/*.so.1*
 %{_libdir}/girepository-1.0/OSTree-1.0.typelib
-%{_prefix}/lib/systemd/system-preset/91-ostree.preset
+/lib/systemd/system-preset/91-ostree.preset
 # >> files
 # << files
 

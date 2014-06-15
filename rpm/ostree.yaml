@@ -56,7 +56,7 @@ Files:
     - "%{_prefix}/lib/dracut/modules.d/98ostree/*"
     - "%{_libdir}/*.so.1*"
     - "%{_libdir}/girepository-1.0/OSTree-1.0.typelib"
-    - "%{_prefix}/lib/systemd/system-preset/91-ostree.preset"
+    - "/lib/systemd/system-preset/91-ostree.preset"
 
 SubPackages:
     - Name: devel
