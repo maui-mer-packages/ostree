@@ -30,6 +30,7 @@ PkgBR:
 PkgConfigBR:
     - gio-unix-2.0
     - libsoup-2.4
+    - libgsystem
 Requires:
     - dracut
     - systemd

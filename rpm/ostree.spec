@@ -27,6 +27,7 @@ Requires(postun): systemd
 Requires(postun): /sbin/ldconfig
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(libsoup-2.4)
+BuildRequires:  pkgconfig(libgsystem)
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
