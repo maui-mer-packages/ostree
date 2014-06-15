@@ -60,6 +60,7 @@ The %{name}-devel package includes the header files for the %{name} library.
 
 %build
 # >> build pre
+mkdir m4
 # << build pre
 
 %reconfigure --disable-static \
